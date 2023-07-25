@@ -1,9 +1,6 @@
 package com.ibm.practica.spital.controller;
 
-import com.ibm.practica.spital.DTO.AddPacientDTO;
-import com.ibm.practica.spital.DTO.AddReservation;
-import com.ibm.practica.spital.DTO.PacientDTO;
-import com.ibm.practica.spital.DTO.Reservation;
+import com.ibm.practica.spital.DTO.*;
 import com.ibm.practica.spital.service.SpitalService;
 import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.validation.Valid;
@@ -83,6 +80,12 @@ public class SpitalController {
     @PostMapping("/editPacient")
     public ResponseEntity editPacient(@RequestBody PacientDTO pacientDTO){
         return service.editPacient(pacientDTO) ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    }
+
+
+    @GetMapping("/doctors")
+    public List<Doctor> getDoctors(){
+        return service.getDoctors();
     }
 
 }

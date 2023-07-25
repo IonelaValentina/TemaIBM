@@ -4,6 +4,7 @@ import com.ibm.practica.spital.DTO.AddPacientDTO;
 import com.ibm.practica.spital.DTO.AddReservation;
 import com.ibm.practica.spital.DTO.PacientDTO;
 import com.ibm.practica.spital.DTO.Reservation;
+import com.ibm.practica.spital.DTO.Doctor;
 import com.ibm.practica.spital.entity.Pacient;
 import com.ibm.practica.spital.repository.PacientRepository;
 import lombok.extern.log4j.Log4j2;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -74,7 +76,6 @@ public class SpitalService {
   List<Reservation> list = new ArrayList<>();
   list.add(p);
   list.add(p1);
-
   return list.stream().filter(r -> r.getPacientID().equals(pacientID)).collect(Collectors.toList());
  }
 
@@ -103,4 +104,30 @@ public class SpitalService {
  public boolean editPacient(PacientDTO pacientDTO){
   return true;
  }
+
+ public List<Doctor> getDoctors(){
+  log.info("SpitalService.getDoctors() retrieving all doctors...");
+  Doctor d1 = new Doctor();
+  d1.setId("1");
+  d1.setFirstName("Stefan");
+  d1.setLastName("Nicolau");
+  d1.setQualification("Medic Specialist");
+  d1.setSpecialization("Dermatologie");
+  d1.setSchedule("Luni-Miercuri: 08:00-14:00");
+  d1.setPhoneNumber("0770111111");
+
+  Doctor d2 = new Doctor();
+  d2.setId("2");
+  d2.setFirstName("Mircea");
+  d2.setLastName("Angelescu");
+  d2.setQualification("Medic Primar");
+  d2.setSpecialization("Boli infectioase");
+  d2.setSchedule("Miercuri-Vineri: 14:00-19:00");
+  d2.setPhoneNumber("0770222222");
+
+  return List.of(d1,d2);
+ }
+
+
+ 
 }
