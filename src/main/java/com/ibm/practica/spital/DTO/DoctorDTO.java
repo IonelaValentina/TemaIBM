@@ -5,9 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Doctor {
+public class DoctorDTO {
 
-    private String id;
+    //private String id;
     private String firstName;
     private String lastName;
     private String qualification;
